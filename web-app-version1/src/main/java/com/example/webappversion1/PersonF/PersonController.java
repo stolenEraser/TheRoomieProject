@@ -1,0 +1,28 @@
+package com.example.webappversion1.PersonF;
+
+import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import java.util.List;
+
+@RestController
+@RequestMapping(path = "api/v1/person")
+public class PersonController {
+
+
+    private final PersonService personservice;
+
+    @Autowired
+    public PersonController(PersonService ps){
+        this.personservice = ps;
+    }
+  
+    @GetMapping //restful endpoint
+	public List<Person> getPersons(){
+		return personservice.getPersons();
+	}
+
+
+    
+}
